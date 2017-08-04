@@ -1,0 +1,28 @@
+{
+  "name": "mocha-prepare-promise",
+  "version": "0.0.1",
+  "description": "Add global before/after hook to your Mocha test environment.",
+  "main": "index.js",
+  "scripts": {
+    "test": "istanbul cover _mocha",
+    "posttest": "[ -f \"result.json\" ] && exit 0 || exit 1 # check if unprepared"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ayecue/mocha-prepare-promise.git"
+  },
+  "keywords": [
+    "mocha",
+    "async",
+    "prepare"
+  ],
+  "author": "swe",
+  "license": "MIT",
+  "devDependencies": {
+    "istanbul": "^0.4.1",
+    "mocha": "^2.3.4"
+  },
+  "peerDependencies": {
+    "mocha": ">=1.0.0"
+  }
+}
