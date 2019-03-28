@@ -1,10 +1,10 @@
 'use strict';
 
-function defaultCallback() {
+function defaultCallback () {
     return Promise.resolve();
 }
 
-function wait(callback = defaultCallback) {
+function wait (callback = defaultCallback) {
     return new Promise((resolve, reject) => {
         const value = callback(resolve);
 
@@ -14,7 +14,7 @@ function wait(callback = defaultCallback) {
     });
 }
 
-function prepare(onPrepare, onUnprepare) {
+function prepare (onPrepare, onUnprepare) {
     const Mocha = require('mocha');
     const nativeRunCallback = Mocha.prototype.run;
 
@@ -23,7 +23,7 @@ function prepare(onPrepare, onUnprepare) {
 
         wait(onPrepare).then(() => (
             nativeRunCallback.call(thisArg, (...args) => (
-                wait(onUnprepare).then(() => done.apply(thisArg, ...args))
+                wait(onUnprepare).then(() => done.apply(thisArg, args))
             ))
         ));
     };
